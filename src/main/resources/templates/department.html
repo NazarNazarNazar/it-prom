@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:insert="fragments/head :: head"/>
+<body>
+<th:block th:insert="fragments/header :: header"/>
+
+<div class="jumbotron pt-4">
+    <div class="container-fluid m-0 p-0">
+        <button type="button" class="btn btn-primary mb-4" onclick="add()" data-toggle="modal"
+                data-target="editRow">
+            <span class="fa fa-plus"></span> Add
+        </button>
+
+        <table class="table table-striped" id="departmentTable">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Parent department</th>
+                <th scope="col">Note</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade add-department-modal" tabindex="-1" id="editRow" role="dialog" aria-labelledby=".model-title-label"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title model-title-label"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form class="department-details-form">
+                    <input type="hidden" id="id" name="id">
+
+                    <div class="form-group">
+                        <label for="name" class="col-form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="parentDepartmentName" class="col-form-label">Parent Department</label>
+                        <input type="text" class="form-control" id="parentDepartmentName" name="parentDepartmentName">
+                    </div>
+                    <div class="form-group">
+                        <label for="note" class="col-form-label">Note</label>
+                        <textarea class="form-control" id="note" name="note"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="save()">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/department.js"></script>
+
+</body>
+</html>
