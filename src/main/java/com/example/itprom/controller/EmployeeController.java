@@ -18,7 +18,7 @@ import javax.validation.Valid;
 
 // TODO: create parent abstract controller
 @RestController
-@RequestMapping(value = "/api/employees")
+@RequestMapping("/api/employees")
 public class EmployeeController {
 
     private final EmployeeService employeeService;

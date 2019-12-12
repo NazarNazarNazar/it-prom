@@ -54,4 +54,9 @@ public class ProfessionServiceImpl implements ProfessionService {
                 .orElseThrow(() ->
                         new ProfessionNotFoundException(String.format("Profession with id: %d not found", id))));
     }
+
+    @Override
+    public List<String> geProfessionsName() {
+        return professionRepository.getAllNames();
+    }
 }

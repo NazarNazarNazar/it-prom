@@ -1,12 +1,15 @@
 const url = "/api/employees/";
-const form = $('.employee-details-form');
+const professionsNameUrl = "/api/professions/name";
+const professionOptions = $("#profession");
+const form = $(".employee-details-form");
 const modalTitle = $(".modal-title-label");
-const modal = $('.add-employee-modal');
+const modal = $(".add-employee-modal");
 const table = $("#employeeTable");
 
 let datatableEmployeeApi;
 
 $(function () {
+    getProfessionsName();
     datatableEmployeeApi = table.DataTable({
         "paging": false,
         "info": false,
@@ -21,8 +24,8 @@ $(function () {
             {data: "firstName"},
             {data: "secondName"},
             {data: "patronymic"},
-            {data: "professionName"},
-            {data: "departmentName"},
+            {data: "profession"},
+            {data: "department"},
             {data: "note"},
             {
                 "render": renderEditBtn,
@@ -42,21 +45,26 @@ function updateRow(id) {
     modalTitle.html("Edit");
     $.get(url + id, function (data) {
         $.each(data, function (key, value) {
-            const findInput = form.find("input[name='" + key + "']");
-            if (findInput.length !== 0) {
-                findInput.val(value);
-            } else {
-                const findTextArea = form.find("textarea[name='" + key + "']");
-                findTextArea.val(value);
-            }
+            $('.employee-details-form #' + key + '').val(value);
         });
         modal.modal();
+    });
+
+}
+
+function getProfessionsName() {
+    professionOptions.prepend('<option value="">');
+    $.get(professionsNameUrl, function (data) {
+        $.each(data, function (key, value) {
+            professionOptions.append(new Option(value, value));
+        })
     });
 }
 
 function save() {
     let data = form.serializeArray()
         .reduce(function(a, x) { a[x.name] = x.value; return a; }, {});
+    console.log(data);
     $.ajax({
         type: "POST",
         url: url,

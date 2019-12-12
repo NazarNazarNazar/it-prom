@@ -17,12 +17,12 @@ public final class EmployeeMapper {
 
         Department department = employee.getDepartment();
         if (department != null) {
-            result.setDepartmentName(department.getName());
+            result.setDepartment(department.getName());
         }
 
         Profession profession = employee.getProfession();
         if (profession != null) {
-            result.setProfessionName(profession.getName());
+            result.setProfession(profession.getName());
         }
 
         return result;

@@ -17,4 +17,6 @@ public interface ProfessionService {
     Profession update(ProfessionDto professionDto);
 
     void delete(Long id);
+
+    List<String> geProfessionsName();
 }

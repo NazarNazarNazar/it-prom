@@ -12,9 +12,9 @@ public class EmployeeDto {
 
     private String note;
 
-    private String departmentName;
+    private String department;
 
-    private String professionName;
+    private String profession;
 
     public Long getId() {
         return id;
@@ -56,19 +56,19 @@ public class EmployeeDto {
         this.note = note;
     }
 
-    public String getDepartmentName() {
-        return departmentName;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
-    public String getProfessionName() {
-        return professionName;
+    public String getProfession() {
+        return profession;
     }
 
-    public void setProfessionName(String professionName) {
-        this.professionName = professionName;
+    public void setProfession(String profession) {
+        this.profession = profession;
     }
 }

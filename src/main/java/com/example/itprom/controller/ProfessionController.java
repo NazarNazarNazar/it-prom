@@ -56,4 +56,9 @@ public class ProfessionController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/name")
+    private ResponseEntity<?> getProfessionsName() {
+        return ResponseEntity.ok(professionService.geProfessionsName());
+    }
 }

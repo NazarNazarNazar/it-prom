@@ -47,13 +47,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee update(EmployeeDto employeeDto) {
         Employee employee = EmployeeMapper.map(employeeDto);
 
-        String departmentName = employeeDto.getDepartmentName();
+        String departmentName = employeeDto.getDepartment();
         if (departmentName != null) {
             departmentService.getByName(departmentName)
                     .ifPresent(employee::setDepartment);
         }
 
-        String professionName = employeeDto.getProfessionName();
+        String professionName = employeeDto.getProfession();
         if (professionName != null) {
             professionService.getByName(professionName)
                     .ifPresent(employee::setProfession);
