@@ -56,4 +56,9 @@ public class DepartmentController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/name")
+    private ResponseEntity<?> getDepartmentsName() {
+        return ResponseEntity.ok(departmentService.getDepartmentsName());
+    }
 }

@@ -63,4 +63,9 @@ public class DepartmentServiceImpl implements DepartmentService {
                 .orElseThrow(() ->
                         new DepartmentNotFoundException(String.format("Department with id: %d not found", id))));
     }
+
+    @Override
+    public List<String> getDepartmentsName() {
+        return departmentRepository.getAllNames();
+    }
 }

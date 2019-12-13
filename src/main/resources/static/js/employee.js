@@ -1,15 +1,19 @@
 const url = "/api/employees/";
-const professionsNameUrl = "/api/professions/name";
-const professionOptions = $("#profession");
 const form = $(".employee-details-form");
 const modalTitle = $(".modal-title-label");
 const modal = $(".add-employee-modal");
 const table = $("#employeeTable");
 
+const professionsNameUrl = "/api/professions/name";
+const professionOptions = $("#profession");
+const departmentsNameUrl = "/api/departments/name";
+const departmentOptions = $("#department");
+
 let datatableEmployeeApi;
 
 $(function () {
     getProfessionsName();
+    getDepartmentsName();
     datatableEmployeeApi = table.DataTable({
         "paging": false,
         "info": false,
@@ -49,7 +53,15 @@ function updateRow(id) {
         });
         modal.modal();
     });
+}
 
+function getDepartmentsName() {
+    departmentOptions.prepend('<option value="">');
+    $.get(departmentsNameUrl, function (data) {
+        $.each(data, function (key, value) {
+            departmentOptions.append(new Option(value, value));
+        });
+    });
 }
 
 function getProfessionsName() {
@@ -57,7 +69,7 @@ function getProfessionsName() {
     $.get(professionsNameUrl, function (data) {
         $.each(data, function (key, value) {
             professionOptions.append(new Option(value, value));
-        })
+        });
     });
 }
 
